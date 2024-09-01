@@ -1,4 +1,4 @@
-function answer(): void {
+function first_answer(): void {
   let index: number = 13;
   let sum: number = 0;
   let k: number = 0;
@@ -11,4 +11,4 @@ function answer(): void {
   console.log(sum);
 }
 
-answer();
+first_answer();
