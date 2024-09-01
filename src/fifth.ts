@@ -1,13 +1,8 @@
 function fifth_answer(text: string): void {
   let reverse_text: string = '';
-  let stack: string[] = [];
 
-  for(let i = 0; i < text.length - 1; i++) {
-    stack.push(text[i]);
-  }
-
-  for(let i = 0; i < text.length - 1; i++) {
-    reverse_text += stack.pop();
+  for(let i = text.length - 1; i >= 0;i--) {
+    reverse_text += text[i]
   }
 
   console.log(`The reversed string of '${text}' is '${reverse_text}'`);
