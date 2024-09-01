@@ -1,8 +1,11 @@
+import fs from "fs";
+import path from "path";
+
 function min(billing: number[]): number {
   let minimum: number = Infinity;
   
   for(let bill of billing) {
-    if (bill < minimum) {
+    if (bill < minimum && bill > 0) {
       minimum = bill;
     }
   }
@@ -24,7 +27,13 @@ function max(billing: number[]): number {
 
 function average(billing: number []): number {
   let avg: number = 0;
-  let length = billing.length;
+  let length = 0;
+
+  for (let bill of billing) {
+    if (bill > 0) {
+      length++;
+    }
+  }
 
   for (let bill of billing) {
     avg += bill / length;
@@ -52,4 +61,10 @@ function third_answer(billing: number[]): void {
   console.log(`the number of days that the billing was greater than average is ${numOfDays(billing)}`);
 }
 
-third_answer([5, 1, 4]);
+
+let filename = path.resolve(__dirname, "month_billing .json");
+let file = fs.readFileSync(filename, "utf-8");
+
+let list = JSON.parse(file) as number[];
+
+third_answer(list);
